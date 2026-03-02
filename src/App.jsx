@@ -623,7 +623,7 @@ export default function App() {
       <div className="hidden md:flex w-64 bg-white border-l border-gray-200 flex-col">
         <div className="p-6 border-b">
           <h1 className="text-2xl font-bold text-blue-600">Ta-line</h1>
-          <p className="text-xs text-gray-500 mt-1">للتجارة الإلكترونية</p>
+          <p className="text-xs text-gray-500 mt-1">لe-commerce</p>
         </div>
         
         <nav className="flex-1 p-4 space-y-2">
