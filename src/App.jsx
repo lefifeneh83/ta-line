@@ -68,6 +68,35 @@ const handleSignIn = async (email, password) => {
     alert(error.message);
   }
 };
+  // src/App.jsx
+import React, { useEffect } from "react";
+import { auth } from "./firebase";
+import { onAuthStateChanged } from "firebase/auth";
+
+function App() {
+
+  useEffect(() => {
+    // هذا الكود يراقب حالة تسجيل الدخول عند فتح التطبيق
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log("المستخدم مسجل دخول:", user.email);
+      } else {
+        console.log("المستخدم غير مسجل دخول");
+      }
+    });
+
+    // تنظيف الـ listener عند إغلاق المكون
+    return () => unsubscribe();
+  }, []);
+
+  return (
+    <div>
+      <h1>مرحبا بك في منصتي</h1>
+    </div>
+  );
+}
+
+export default App;
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center p-4">
       <div className="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md">
