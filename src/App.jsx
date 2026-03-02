@@ -103,7 +103,19 @@ const AuthScreen = ({ onLogin }) => {
     </div>
   );
 };
+import { auth } from "./firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
+const handleSignUp = async (email, password) => {
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    console.log("User created:", userCredential.user);
+    alert("تم إنشاء الحساب بنجاح!");
+  } catch (error) {
+    console.error(error.message);
+    alert(error.message);
+  }
+};
 // --- شاشة المحفظة ---
 
 const WalletScreen = ({ balance, setBalance }) => {
