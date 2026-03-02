@@ -91,7 +91,7 @@ function App() {
 
   return (
     <div>
-      <h1>مرحبا بك في منصتي</h1>
+      <h1>مرحبا بك في خدمة تــالين </h1>
     </div>
   );
 }
@@ -622,7 +622,7 @@ export default function App() {
       {/* القائمة الجانبية (Desktop) */}
       <div className="hidden md:flex w-64 bg-white border-l border-gray-200 flex-col">
         <div className="p-6 border-b">
-          <h1 className="text-2xl font-bold text-blue-600">ســــاهلة</h1>
+          <h1 className="text-2xl font-bold text-blue-600">Ta-line</h1>
           <p className="text-xs text-gray-500 mt-1">للتجارة الإلكترونية</p>
         </div>
         
