@@ -69,7 +69,7 @@ const handleSignIn = async (email, password) => {
   }
 };
   // src/App.jsx
-import logo from './assets/logo.svg'
+import logo from "./assets/ta-line-logo.svg";
 import React, { useEffect } from "react";
 import { auth } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
