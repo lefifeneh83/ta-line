@@ -55,8 +55,6 @@ const AuthScreen = ({ onLogin }) => {
       }
     }
   };
-import { auth } from "./firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
 
 const handleSignIn = async (email, password) => {
   try {
@@ -69,22 +67,9 @@ const handleSignIn = async (email, password) => {
   }
 };
   // src/App.jsx
-import Navbar from "./components/Navbar";
-import logo from "./assets/ta-line-logo.svg";
 import React, { useEffect } from "react";
 import { auth } from "./firebase";
-import { onAuthStateChanged } from "firebase/auth";
 
-function App() {
-
-  useEffect(() => {
-    // هذا الكود يراقب حالة تسجيل الدخول عند فتح التطبيق
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        console.log("المستخدم مسجل دخول:", user.email);
-      } else {
-        console.log("المستخدم غير مسجل دخول");
-      }
     });
 
     // تنظيف الـ listener عند إغلاق المكون
@@ -98,8 +83,6 @@ function App() {
     </>
   );
 }
-
-export default App;
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center p-4">
       <div className="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md">
@@ -148,8 +131,6 @@ export default App;
   );
 };
 import { auth } from "./firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-
 const handleSignUp = async (email, password) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
