@@ -1,3 +1,5 @@
+import { auth } from "./firebase";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from 'react';
 import { MessageCircle, Truck, Ruler, CreditCard, Smartphone, Building, User, Wallet, ArrowLeft, Send, Package, History, Settings, LogOut, Menu, X, Bell } from 'lucide-react';
 
@@ -33,7 +35,32 @@ const AuthScreen = ({ onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  import { auth } from "./firebase";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    if (isRegister) {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      onLogin({
+        name,
+        email: userCredential.user.email,
+        balance: 0
+      });
+    } else {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      onLogin({
+        name: userCredential.user.email,
+        email: userCredential.user.email,
+        balance: 0
+      });
+    }
+  } catch (error) {
+    alert(error.message);
+  }
+};
     e.preventDefault();
 
     if (isRegister) {
